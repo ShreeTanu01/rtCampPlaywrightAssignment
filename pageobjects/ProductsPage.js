@@ -2,6 +2,9 @@ class ProductsPage{
 
     constructor(page)
     {
+        this.burgerMenuBtn = page.locator("#react-burger-menu-btn");
+        this.allItems = page.locator("#inventory_sidebar_link");
+        this.burgerCrossBtn = page.locator("img[alt='Close Menu']");
         this.products = page.locator(".inventory_item");//list rows
         this.productsText = page.locator(".inventory_item div.inventory_item_description a div.inventory_item_name "); //list of products text
         this.productsPrice = page.locator(".inventory_item div.inventory_item_description div.pricebar div.inventory_item_price");//list of products price
@@ -13,9 +16,23 @@ class ProductsPage{
         this.cartIcon = page.locator(".shopping_cart_link");
     }
 
+    async goTOAllItem()
+    {
+        await this.burgerMenuBtn.click();
+        await this.allItems.click();
+        await this.burgerCrossBtn.click();
+    }
+
     async getZtoAList()
     {
         await this.filter.click();
+        await this.dropdownOptionZtoA.click();
+    }
+
+    async getHightolowList()
+    {
+        await this.filter.click();
+        await this.dropdownOptionHtoL.click();
     }
 }
 module.exports = {ProductsPagePage};
