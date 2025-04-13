@@ -15,5 +15,6 @@ class CartsPage{
         this.finishBtn = page.locator("#finish");
         this.completeMsg = page.locator(".complete-header");
     }
+    
 }
 module.exports = {CartsPage};
