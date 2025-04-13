@@ -1,11 +1,15 @@
 const {test,expect} = require('@playwright/test');
 const {LoginPage} = require('../pageobjects/loginPage');
 const {ProductsPage} = require('../pageobjects/productsPage');
+const {CartsPage} = require('../pageobjects/CartsPage');
 
 test('Saucedemo login',async ({page})=>
 {
     const username = "standard_user";
     const password = "secret_sauce";
+    const firstname = "Tanushree";
+    const lastname = "Tembhurnikar";
+    const zipcode = "380058";
     const loginPage = new LoginPage(page);
     await loginPage.goTo();
     await loginPage.validLogin(username,password);
@@ -23,8 +27,12 @@ test('Saucedemo login',async ({page})=>
 
     await productsPage.addProductToCart();
     await productsPage.navigateToCart();
-    page.pause();
    
-
+    const cartsPage = new CartsPage(page);
+    await cartsPage.clickCheckout();
+    await cartsPage.addUserInfo(firstname,lastname,zipcode);
+    await cartsPage.clickFinishButton();
+    await cartsPage.getmsg();
+    //await page.pause();
 
 })

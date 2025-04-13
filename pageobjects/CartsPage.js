@@ -15,6 +15,28 @@ class CartsPage{
         this.finishBtn = page.locator("#finish");
         this.completeMsg = page.locator(".complete-header");
     }
-    
+
+async clickCheckout()
+{
+    await this.checkoutBtn.click();
+}
+
+async addUserInfo(firstname,lastname,pincode)
+{
+    await this.firtName.fill(firstname);
+    await this.lastName.fill(lastname);
+    await this.zipCode.fill(pincode);
+    await this.continueBtn.click();
+}
+async clickFinishButton()
+{
+    await this.finishBtn.click();
+}
+
+async getmsg() {
+    const msg = await this.completeMsg.textContent();
+    console.log(msg);
+}
+
 }
 module.exports = {CartsPage};
