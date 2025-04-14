@@ -99,6 +99,7 @@ const config = {
     browserName : 'firefox',
     headless : true,
     screenshot : 'on',
+    video : 'retain-on-failure',
     trace : 'on',//off,on
     
     

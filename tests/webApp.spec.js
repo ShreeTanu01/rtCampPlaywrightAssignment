@@ -7,7 +7,10 @@ test('Saucedemo Test Assignment' ,async ({page})=>
     const poManager = new POManager(page);
     const loginPage = poManager.getLoginPage();
     await loginPage.goTo();
+    await expect(page).toHaveURL(/.*saucedemo.com/); // assert URL loaded
     await loginPage.validLogin(dataset.username,dataset.password);
+    await expect(page.locator('.title')).toHaveText('Products'); // assert login success
+
     
     const productsPage = poManager.getProductPage();
     console.log("A to Z:");

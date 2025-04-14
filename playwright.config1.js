@@ -22,6 +22,7 @@ const config = {
       browserName : 'firefox',
       headless : true,
       screenshot : 'on',
+      video : 'retain-on-failure',
       trace : 'on',//off,on
     
       }
@@ -35,6 +36,7 @@ const config = {
       browserName : 'chromium',
       headless : false,
       screenshot : 'on',
+      video : 'retain-on-failure',
       trace : 'on',//off,on
       }
     
@@ -46,9 +48,11 @@ const config = {
       {
 
       browserName : 'webkit',
-      headless : true,
+      headless : false,
       screenshot : 'on',
+      video : 'retain-on-failure',
       trace : 'on',//off,on
+     // ...devices['iPhone 11'],
       }
     
     }
