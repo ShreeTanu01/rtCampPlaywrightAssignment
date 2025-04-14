@@ -1,19 +1,25 @@
 const {test,expect} = require('@playwright/test');
-const {LoginPage} = require('../pageobjects/loginPage');
-const {ProductsPage} = require('../pageobjects/productsPage');
-const {CartsPage} = require('../pageobjects/CartsPage');
-
-test('Saucedemo login',async ({page})=>
+// const {LoginPage} = require('../pageobjects/loginPage');
+// const {ProductsPage} = require('../pageobjects/productsPage');
+// const {CartsPage} = require('../pageobjects/CartsPage');
+const {POManager} = require('../pageobjects/POManager');
+const dataset = JSON.parse(JSON.stringify(require('../utility/webAppTestData.json')));
+for (const data of dataset)
 {
-    const username = "standard_user";
-    const password = "secret_sauce";
-    const firstname = "Tanushree";
-    const lastname = "Tembhurnikar";
-    const zipcode = "380058";
-    const loginPage = new LoginPage(page);
+test(`Saucedemo login for ${data.username}`,async ({page})=>
+{
+    // const username = "standard_user";
+    // const password = "secret_sauce";
+    // const firstname = "Tanushree";
+    // const lastname = "Tembhurnikar";
+    // const zipcode = "380058";
+    const poManager = new POManager(page);
+   // const loginPage = new LoginPage(page);
+    const loginPage = poManager.getLoginPage();
     await loginPage.goTo();
-    await loginPage.validLogin(username,password);
-    const productsPage = new ProductsPage(page);
+    await loginPage.validLogin(data.username,data.password);
+    const productsPage = poManager.getProductPage();
+    // const productsPage = new ProductsPage(page);
     console.log("A to Z:");
     await productsPage.printProduct();
     
@@ -27,12 +33,13 @@ test('Saucedemo login',async ({page})=>
 
     await productsPage.addProductToCart();
     await productsPage.navigateToCart();
-   
-    const cartsPage = new CartsPage(page);
+   //const cartsPage = new CartsPage(page);
+    const cartsPage = poManager.getCartPage();
     await cartsPage.clickCheckout();
-    await cartsPage.addUserInfo(firstname,lastname,zipcode);
+    await cartsPage.addUserInfo(data.firstname,data.lastname,data.zipcode);
     await cartsPage.clickFinishButton();
     await cartsPage.getmsg();
-    //await page.pause();
+   // await page.pause();
 
-})
+});
+}
