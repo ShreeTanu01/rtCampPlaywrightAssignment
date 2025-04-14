@@ -1,26 +1,7 @@
-[
-    {
+{
      "username" : "standard_user",
      "password" : "secret_sauce",
      "firstname" : "Tanushree",
      "lastname" : "Tembhurnikar",
      "zipcode" : "380058"
-},
-
-{
-    "username" : "problem_user",
-    "password" : "secret_sauce",
-    "firstname" : "Krunal",
-    "lastname" : "Kolhatkar",
-    "zipcode" : "490023"
-},
-
-{
-    "username" : "locked_out_user_Invalid",
-    "password" : "secret_sauce_Invalid",
-    "firstname" : "Krunal",
-    "lastname" : "Kolhatkar",
-    "zipcode" : "490023"
-}
-
-]
+    }

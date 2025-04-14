@@ -9,13 +9,7 @@ class ProductsPage{
         this.productsText = page.locator(".inventory_item div.inventory_item_description a div.inventory_item_name "); //list of products text
         this.productsPrice = page.locator(".inventory_item div.inventory_item_description div.pricebar div.inventory_item_price");//list of products price
         this.addToCartBtn = page.locator(".inventory_item div.inventory_item_description div.pricebar button");//list of btn add to cart
-       // this.filter = page.locator("select_container");
-       // this.dropdownOptionZtoA = page.selectOption('select.product_sort_container', 'za');//zto a
-        //await page.locator('select.product_sort_container option[value="za"]').click();
-        //this.dropdownOptionHtoL = page.selectOption('select.product_sort_container', 'hilo');//high to low
-       // this.dropdownOptionZtoA = page.selectOption('select.product_sort_container', 'za');
-//this.dropdownOptionHtoL = page.selectOption('select.product_sort_container', 'hilo');
-this.filter = page.locator('select.product_sort_container');
+        this.filter = page.locator('select.product_sort_container');
         this.cartIcon = page.locator(".shopping_cart_link");
     }
 
