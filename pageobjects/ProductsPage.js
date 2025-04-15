@@ -38,7 +38,29 @@ class ProductsPage{
         productName.forEach((name, index) => {
         console.log(`${index + 1}. ${name} - $${productPrice[index]}`);
         });
-        
+       
+    }
+    async getAllProductName()
+    {
+        const productName = await this.productsText.allTextContents();
+        const productPrice = await this.productsPrice.allTextContents();
+        // Combine them into one output
+        console.log("Product List:");
+        productName.forEach((name, index) => {
+        console.log(`${index + 1}. ${name} - $${productPrice[index]}`);
+        });
+        return productName;
+    }
+    async getAllProductPrice()
+    {
+        const productName = await this.productsText.allTextContents();
+        const productPrice = await this.productsPrice.allTextContents();
+        // Combine them into one output
+        console.log("Product List:");
+        productName.forEach((name, index) => {
+        console.log(`${index + 1}. ${name} - $${productPrice[index]}`);
+        });
+        return productPrice;
     }
 
     async addProductToCart(){
@@ -47,7 +69,25 @@ class ProductsPage{
         {
             await this.addToCartBtn.nth(i).click();
         }
+        return count;
     }
+
+    // async addProductToCart(productName) {
+    //     const count = await this.products.count();
+        
+    //     for (let i = 0; i < count; ++i) {
+    //         const name = await this.products.nth(i).textContent();
+            
+    //         if (name.trim() === productName) {
+    //             await this.addToCartBtn.nth(i).click();
+    //             console.log(`Added product to cart: ${productName}`);
+    //             return; // exit once found
+    //         }
+    //     }
+    
+    //     throw new Error(`Product "${productName}" not found`);
+    // }
+    
 
    async navigateToCart()
     {
