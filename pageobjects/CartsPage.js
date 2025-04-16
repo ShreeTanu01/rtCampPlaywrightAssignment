@@ -6,7 +6,6 @@ class CartsPage{
         this.checkoutOverviewTitle = page.locator(".title");
         this.checkoutCompleteTitle = page.locator(".title");
         this.checkoutTitle = page.locator('span.title[data-test="title"]');
-        //this.checkoutTitle = page.locator("span.title[data-test=\"title\"]");
         this.checkoutBtn = page.locator("#checkout");
         this.firtName = page.locator("#first-name");
         this.lastName = page.locator("#last-name");
@@ -39,8 +38,7 @@ async getmsg() {
 }
 
 async getTitle() {
-    return await this.checkoutTitle;//.textContent();
-   // console.log(text);
+    return await this.checkoutTitle;
 }
 
 }

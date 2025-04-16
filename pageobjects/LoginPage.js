@@ -6,6 +6,7 @@ class LoginPage{
        this.signInButton = page.locator("#login-button");
        this.userName = page.locator("#user-name");
        this.passWord = page.locator("#password");
+       
     }
 
     async validLogin(username,password)
