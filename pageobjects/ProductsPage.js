@@ -47,28 +47,22 @@ class ProductsPage{
         console.log("Product List:");
         productName.forEach((name, index) => {
         console.log(`${index + 1}. ${name} - $${productPrice[index]}`);
+
         });
        
     }
+   
+
     async getAllProductName()
     {
         const productName = await this.productsText.allTextContents();
-        const productPrice = await this.productsPrice.allTextContents();
-        console.log("Product List:");
-        productName.forEach((name, index) => {
-        console.log(`${index + 1}. ${name} - $${productPrice[index]}`);
-        });
         return productName;
     }
+   
+
     async getAllProductPrice()
     {
-        const productName = await this.productsText.allTextContents();
         const productPrice = await this.productsPrice.allTextContents();
-        // Combine them into one output
-        console.log("Product List:");
-        productName.forEach((name, index) => {
-        console.log(`${index + 1}. ${name} - $${productPrice[index]}`);
-        });
         return productPrice;
     }
 

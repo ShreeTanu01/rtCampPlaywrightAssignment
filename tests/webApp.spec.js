@@ -12,36 +12,28 @@ test('Saucedemo Test Assignment' ,async ({page})=>
     const productsPage = poManager.getProductPage();
     await expect(await productsPage.getProductTitle()).toHaveText('Products');
     await productsPage.goTOAllItem();
-
-    
-    
-    console.log("A to Z:");
+    console.log("--------------------A to Z:--------------------");
     await productsPage.printProduct();
 
    // Verify the sorting order displayed for Z-A on the “All Items” page.
-    console.log("Z to A:");
+    console.log("--------------------Z to A:--------------------");
     await productsPage.selectZtoA();
-    const zToANames = await productsPage.getAllProductName();
-    console.log("All Product Names:", zToANames);
-    const sortedZtoA = [...zToANames].sort().reverse();
-    expect(zToANames).toEqual(sortedZtoA);
+    const actualZToANames = await productsPage.getAllProductName();
     await productsPage.printProduct();
-    
+    const sortedExpectedZtoA = [...actualZToANames].sort().reverse();
+    expect(actualZToANames).toEqual(sortedExpectedZtoA);
+   
    //Verify the price order (high-low) displayed on the “All Items” page.  
-    console.log("Price High to Low:");
+    console.log("--------------------Price High to Low:--------------------");
     await productsPage.selectHighToLow();
-    const prices = await productsPage.getAllProductPrice();
-    const sortedPrices = [...prices].sort((a, b) => b - a);
-    expect(prices).toEqual(sortedPrices);
+    const actualPrices = await productsPage.getAllProductPrice();
     await productsPage.printProduct();
-
-
+    const sortedExpectedPrices = [...actualPrices].sort((a, b) => b - a);
+    expect(actualPrices).toEqual(sortedExpectedPrices);
+  
     //Add multiple items to the card and validate the checkout journey.
     const countOfProductadded =await productsPage.addProductToCart();
     const cartBadge = await productsPage.getCartBadge();
-   // const cartBadge = await page.locator('.shopping_cart_badge').textContent();
-   // await expect(await cartsPage.getTitle()).toHaveText('Checkout: Your Information');
-    console.log(cartBadge);
     await expect(Number(cartBadge)).toEqual(countOfProductadded);
     await productsPage.navigateToCart();
     await expect(page).toHaveURL(/.*cart.html/); 
@@ -54,7 +46,5 @@ test('Saucedemo Test Assignment' ,async ({page})=>
     await expect(await cartsPage.getTitle()).toHaveText('Checkout: Complete!');
     const message = await cartsPage.getmsg();
     expect(message).toContain("Thank you for your order!");
-  
-
 
 });
