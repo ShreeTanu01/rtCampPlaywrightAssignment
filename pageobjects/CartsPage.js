@@ -2,9 +2,9 @@ class CartsPage{
 
     constructor(page)
     {
-        this.checkoutInfoTitle = page.locator('span.title[data-test="title"]');
-        this.checkoutOverviewTitle = page.locator(".title");
-        this.checkoutCompleteTitle = page.locator(".title");
+        //this.checkoutInfoTitle = page.locator('span.title[data-test="title"]');
+        //this.checkoutOverviewTitle = page.locator(".title");
+       // this.checkoutCompleteTitle = page.locator(".title");
         this.checkoutTitle = page.locator('span.title[data-test="title"]');
         this.checkoutBtn = page.locator("#checkout");
         this.firtName = page.locator("#first-name");

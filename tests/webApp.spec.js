@@ -38,7 +38,8 @@ test('Saucedemo Test Assignment' ,async ({page})=>
 
     //Add multiple items to the card and validate the checkout journey.
     const countOfProductadded =await productsPage.addProductToCart();
-    const cartBadge = await page.locator('.shopping_cart_badge').textContent();
+    const cartBadge = await productsPage.getCartBadge();
+   // const cartBadge = await page.locator('.shopping_cart_badge').textContent();
    // await expect(await cartsPage.getTitle()).toHaveText('Checkout: Your Information');
     console.log(cartBadge);
     await expect(Number(cartBadge)).toEqual(countOfProductadded);

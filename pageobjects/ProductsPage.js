@@ -20,12 +20,14 @@ class ProductsPage{
         return await this.productTitle;
     }
 
+    async getCartBadge() {
+        const text = await this.cartBadge.textContent();
+        return text;
+    }
+
     async goTOAllItem() {
         await this.burgerMenuBtn.click();
         await this.allItems.click();
-        //await this.allItems.waitFor({ state: 'visible' }); // wait until it's fully visible and stable
-        // await this.allItems.hover();
-        // await this.allItems.click();
         await this.burgerCrossBtn.click();
 
     }
