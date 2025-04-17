@@ -18,40 +18,38 @@ test.beforeEach(async ({ page }) => {
 });
 
 
-
-
-
-
 //Test 1: A-Z Products Display
-test('Display A to Z Product List', async ({ page }) => {
+test('Verify the sorting order displayed for A-Z on the All Items page', async ({ page }) => {
     console.log("--------------------A to Z:--------------------");
     await productsPage.printProduct(); // just prints, no assertion
-    await takeScreenshot(page, 'a-to-z-sorted');
+    const actual = await productsPage.getAllProductName();
+    await productsPage.printProduct();
+    const expected = [...actual].sort();
+    expect(actual).toEqual(expected);
+    //await takeScreenshot(page, 'a-to-z-sorted');
 });
 
 //Test 2: Verify Z to A Sorting
-test('Verify Z to A Sorting of Product Names', async ({ page }) => {
+test('Verify the sorting order displayed for Z-A on the All Items page', async ({ page }) => {
     console.log("--------------------Z to A:--------------------");
     await productsPage.selectZtoA();
     const actual = await productsPage.getAllProductName();
     await productsPage.printProduct();
     const expected = [...actual].sort().reverse();
     expect(actual).toEqual(expected);
-    await takeScreenshot(page, 'z-to-a-sorted');
-   // await expect(page).toHaveScreenshot('z-to-a-sorted.png');
+    //await takeScreenshot(page, 'z-to-a-sorted');
 });
 
 
 //Test 3: Verify Price Sorting High to Low
-test('Verify Price High to Low Sorting', async ({ page }) => {
+test('Verify the sorting order displayed for High to low on the All Items page', async ({ page }) => {
     console.log("--------------------Price High to Low:--------------------");
     await productsPage.selectHighToLow();
     const actual = await productsPage.getAllProductPrice();
     await productsPage.printProduct();
     const expected = [...actual].map(Number).sort((a, b) => b - a);
     expect(actual.map(Number)).toEqual(expected);
-    await takeScreenshot(page, 'high-to-low-sorted');
-    //await expect(page).toHaveScreenshot('high-to-low-sorted.png');
+   // await takeScreenshot(page, 'high-to-low-sorted');
 });
 
 
@@ -60,19 +58,20 @@ test('Add Items to Cart and Validate Cart Badge Count', async ({ page }) => {
     const countAdded = await productsPage.addProductToCart();
     const badge = await productsPage.getCartBadge();
     expect(Number(badge)).toEqual(countAdded);
-   // await expect(page).toHaveScreenshot('all-item-added-to-cart.png');
+    //await takeScreenshot(page, 'aal-item-added-to-cart');
 });
 
-
+//Test 5: Verify error message when firstName,lastName,zipcode is blank
 test('Error validation: Checkout Info page - when firstName,lastName,zipcode is blank', async ({ page }) => {
     await productsPage.navigateToCart();
     const cartsPage = poManager.getCartPage();
     await cartsPage.clickCheckout();
     await cartsPage.clickContinueButton();
     await expect(await cartsPage.getErrormsg()).toHaveText('Error: First Name is required');
-    await takeScreenshot(page, 'Incomplete-Info-errmsg-firstname');
+    //await takeScreenshot(page, 'Incomplete-Info-errmsg-firstname');
 });
 
+//Test 6: Verify error message when lastName,zipcode is blank
 test('Error validation: Checkout Info page - when lastName,zipcode is blank', async ({ page }) => {
     await productsPage.navigateToCart();
     const cartsPage = poManager.getCartPage();
@@ -80,9 +79,10 @@ test('Error validation: Checkout Info page - when lastName,zipcode is blank', as
     await cartsPage.addUserInfo(dataset.firstname, "", "");
     await cartsPage.clickContinueButton();
     await expect(await cartsPage.getErrormsg()).toHaveText('Error: Last Name is required');
-    await takeScreenshot(page, 'Incomplete-Info-errmsg-lastname');
+   // await takeScreenshot(page, 'Incomplete-Info-errmsg-lastname');
 });
 
+//Test 7: Verify error message when zipcode is blank
 test('Error validation: Checkout Info page - when zipcode is blank', async ({ page }) => {
     await productsPage.navigateToCart();
     const cartsPage = poManager.getCartPage();
@@ -90,11 +90,11 @@ test('Error validation: Checkout Info page - when zipcode is blank', async ({ pa
     await cartsPage.addUserInfo(dataset.firstname, dataset.lastname, "");
     await cartsPage.clickContinueButton();
     await expect(await cartsPage.getErrormsg()).toHaveText('Error: Postal Code is required');
-    await takeScreenshot(page, 'Incomplete-Info-errmsg-zip');
+    //await takeScreenshot(page, 'Incomplete-Info-errmsg-zip');
 });
 
 
-
+//Test 8: Verify error message disappear after clicking X
 test('Error validation: Checkout Info page - error msg disappear after clicking X', async ({ page }) => {
     await productsPage.navigateToCart();
     const cartsPage = poManager.getCartPage();
@@ -104,17 +104,19 @@ test('Error validation: Checkout Info page - error msg disappear after clicking 
     await expect(await cartsPage.getErrormsg()).toHaveText('Error: Postal Code is required');
     await cartsPage.getErrorMsgXBtn();
     await expect(await cartsPage.getErrormsg()).not.toBeVisible();
-    await takeScreenshot(page, 'Incomplete-Info-errmsg-disappear');
+    //await takeScreenshot(page, 'Incomplete-Info-errmsg-disappear');
 });
 
+//Test 9: Verify cart count zero when nothing is added
 test('Verify when Cart is empty Badge Count 0', async ({ page }) => {
 
     await expect(productsPage.cartBadge).toHaveCount(0);
+    //await takeScreenshot(page, 'empty-cart');
 });
 
 
-//Test 5: Complete Checkout Journey
-test('Complete Checkout Journey', async ({ page }) => {
+//Test 10:Verify Complete Checkout Journey
+test('Verify Complete Checkout Journey', async ({ page }) => {
     await productsPage.addProductToCart();
     await productsPage.navigateToCart();
     await expect(page).toHaveURL(/.*cart.html/);
@@ -128,10 +130,9 @@ test('Complete Checkout Journey', async ({ page }) => {
     await expect(await cartsPage.getTitle()).toHaveText('Checkout: Complete!');
     const message = await cartsPage.getmsg();
     expect(message).toContain("Thank you for your order!");
-    await takeScreenshot(page, 'successful-order');
-   // await expect(page).toHaveScreenshot('successful-order-message.png');
+    //await takeScreenshot(page, 'successful-order');
+   
 }
  
 );
 
-//npm run run:all

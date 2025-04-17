@@ -24,7 +24,6 @@ async addUserInfo(firstname,lastname,pincode)
     await this.firtName.fill(firstname);
     await this.lastName.fill(lastname);
     await this.zipCode.fill(pincode);
-    //await this.continueBtn.click();
 }
 
 async clickContinueButton()

@@ -8,7 +8,6 @@ const config = {
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
-  
     timeout: 5000
   },
   
@@ -23,7 +22,7 @@ const config = {
       headless : true,
       screenshot : 'on',
       video : 'retain-on-failure',
-      trace : 'on',//off,on
+      trace : 'retain-on-failure',//off,on
     
       }
     },
@@ -34,10 +33,10 @@ const config = {
       {
 
       browserName : 'chromium',
-      headless : false,
+      headless : true,
       screenshot : 'on',
       video : 'retain-on-failure',
-      trace : 'on',//off,on
+      trace : 'retain-on-failure',
       }
     
     },
@@ -48,11 +47,10 @@ const config = {
       {
 
       browserName : 'webkit',
-      headless : false,
+      headless : true,
       screenshot : 'on',
       video : 'retain-on-failure',
-      trace : 'on',//off,on
-     // ...devices['iPhone 11'],
+      trace : 'retain-on-failure',
       }
     
     }
@@ -60,7 +58,6 @@ const config = {
   ]
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   
-
 };
 
 module.exports = config;

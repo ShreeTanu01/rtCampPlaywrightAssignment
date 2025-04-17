@@ -1,4 +1,3 @@
-// utility/visualHelper.js
 const { expect } = require('@playwright/test');
 const path = require('path');
 const fs = require('fs');
@@ -11,8 +10,11 @@ async function takeScreenshot(page, name) {
         fs.mkdirSync(screenshotDir, { recursive: true });
     }
 
+    // Take screenshot
     await page.screenshot({ path: screenshotPath });
-}
 
+    // Compare screenshot
+    await expect(page).toHaveScreenshot(`${name}.png`);
+}
 
 module.exports = { takeScreenshot };

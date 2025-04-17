@@ -8,8 +8,7 @@
     "test": "npx playwright test tests/webApp1.spec.js --config=playwright.config1.js --reporter=line --reporter=allure-playwright",
     "report": "npx allure-commandline generate ./allure-results --clean && npx allure-commandline open ./allure-report",
     "run:all": "npm run clean:allure && npm run test && npm run report",
-    "test:visual": "npx playwright test --update-snapshots",
-    "test:accessibility": "node tests/accessibility.spec.js"
+    "test:visual": "npx playwright test --update-snapshots"
   },
   "keywords": [],
   "author": "",

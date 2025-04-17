@@ -24,10 +24,6 @@ class ProductsPage{
         const text = await this.cartBadge.textContent();
         return text;
     }
-    
-    // async getCartBadge() {
-    //     return await this.cartBadge.count(); // 0 or 1
-    // }
 
     async goTOAllItem() {
         await this.burgerMenuBtn.click();
@@ -43,7 +39,6 @@ class ProductsPage{
         await this.filter.selectOption('hilo');
     }
     
-
     async printProduct()
     {
         const productName = await this.productsText.allTextContents();
@@ -56,7 +51,6 @@ class ProductsPage{
        
     }
    
-
     async getAllProductName()
     {
         const productName = await this.productsText.allTextContents();
