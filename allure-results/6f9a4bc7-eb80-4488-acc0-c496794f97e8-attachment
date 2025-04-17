@@ -1,0 +1,175 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Error validation: Checkout Info page - when zipcode is blank
+- Location: D:\1_Playwright\rtCamp\tests\webApp.spec.js:86:1
+
+# Error details
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('a#inventory_sidebar_link.bm-item.menu-item')
+    - locator resolved to <a href="#" class="bm-item menu-item" id="inventory_sidebar_link" data-test="inventory-sidebar-link">All Items</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    37 × waiting for element to be visible, enabled and stable
+       - element is not visible
+     - retrying click action
+       - waiting 500ms
+
+    at ProductsPage.goTOAllItem (D:\1_Playwright\rtCamp\pageobjects\ProductsPage.js:30:29)
+    at D:\1_Playwright\rtCamp\tests\webApp.spec.js:17:5
+```
+
+# Page snapshot
+
+```yaml
+- button "Open Menu"
+- img "Open Menu"
+- text: Swag Labs Products Name (A to Z)
+- combobox:
+  - option "Name (A to Z)" [selected]
+  - option "Name (Z to A)"
+  - option "Price (low to high)"
+  - option "Price (high to low)"
+- link "Sauce Labs Backpack":
+  - img "Sauce Labs Backpack"
+- link "Sauce Labs Backpack"
+- text: carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99
+- button "Add to cart"
+- link "Sauce Labs Bike Light":
+  - img "Sauce Labs Bike Light"
+- link "Sauce Labs Bike Light"
+- text: A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included. $9.99
+- button "Add to cart"
+- link "Sauce Labs Bolt T-Shirt":
+  - img "Sauce Labs Bolt T-Shirt"
+- link "Sauce Labs Bolt T-Shirt"
+- text: Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99
+- button "Add to cart"
+- link "Sauce Labs Fleece Jacket":
+  - img "Sauce Labs Fleece Jacket"
+- link "Sauce Labs Fleece Jacket"
+- text: It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office. $49.99
+- button "Add to cart"
+- link "Sauce Labs Onesie":
+  - img "Sauce Labs Onesie"
+- link "Sauce Labs Onesie"
+- text: Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel. $7.99
+- button "Add to cart"
+- link "Test.allTheThings() T-Shirt (Red)":
+  - img "Test.allTheThings() T-Shirt (Red)"
+- link "Test.allTheThings() T-Shirt (Red)"
+- text: This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton. $15.99
+- button "Add to cart"
+- contentinfo:
+  - list:
+    - listitem:
+      - link "Twitter"
+    - listitem:
+      - link "Facebook"
+    - listitem:
+      - link "LinkedIn"
+  - text: © 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy
+```
+
+# Test source
+
+```ts
+   1 | class ProductsPage{
+   2 |
+   3 |     constructor(page)
+   4 |     {
+   5 |         this.burgerMenuBtn = page.locator('button[id="react-burger-menu-btn"]');
+   6 |         this.allItems = page.locator('a#inventory_sidebar_link.bm-item.menu-item');
+   7 |         this.burgerCrossBtn = page.locator('button[id="react-burger-cross-btn"]');
+   8 |         this.products = page.locator(".inventory_item");
+   9 |         this.productsText = page.locator(".inventory_item div.inventory_item_description a div.inventory_item_name "); 
+  10 |         this.productsPrice = page.locator(".inventory_item div.inventory_item_description div.pricebar div.inventory_item_price");
+  11 |         this.addToCartBtn = page.locator(".inventory_item div.inventory_item_description div.pricebar button");
+  12 |         this.filter = page.locator('select.product_sort_container');
+  13 |         this.cartIcon = page.locator(".shopping_cart_link");
+  14 |         this.productTitle= page.locator('.title');
+  15 |         this.cartBadge = page.locator('.shopping_cart_badge');
+  16 |     }
+  17 |
+  18 |     async getProductTitle()
+  19 |     {
+  20 |         return await this.productTitle;
+  21 |     }
+  22 |
+  23 |     async getCartBadge() {
+  24 |         const text = await this.cartBadge.textContent();
+  25 |         return text;
+  26 |     }
+  27 |
+  28 |     async goTOAllItem() {
+  29 |         await this.burgerMenuBtn.click();
+> 30 |         await this.allItems.click();
+     |                             ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  31 |         await this.burgerCrossBtn.click();
+  32 |
+  33 |     }
+  34 |     async selectZtoA() {
+  35 |         await this.filter.selectOption('za');
+  36 |     }
+  37 |     
+  38 |     async selectHighToLow() {
+  39 |         await this.filter.selectOption('hilo');
+  40 |     }
+  41 |     
+  42 |     async printProduct()
+  43 |     {
+  44 |         const productName = await this.productsText.allTextContents();
+  45 |         const productPrice = await this.productsPrice.allTextContents();
+  46 |         console.log("Product List:");
+  47 |         productName.forEach((name, index) => {
+  48 |         console.log(`${index + 1}. ${name} - $${productPrice[index]}`);
+  49 |
+  50 |         });
+  51 |        
+  52 |     }
+  53 |    
+  54 |     async getAllProductName()
+  55 |     {
+  56 |         const productName = await this.productsText.allTextContents();
+  57 |         return productName;
+  58 |     }
+  59 |    
+  60 |
+  61 |     async getAllProductPrice()
+  62 |     {
+  63 |         const productPrice = await this.productsPrice.allTextContents();
+  64 |         return productPrice;
+  65 |     }
+  66 |
+  67 |     async addProductToCart(){
+  68 |         const count = await this.products.count();
+  69 |         for(let i=0;i<count;++i)
+  70 |         {
+  71 |             await this.addToCartBtn.nth(i).click();
+  72 |         }
+  73 |         return count;
+  74 |     }
+  75 |
+  76 |
+  77 |    async navigateToCart()
+  78 |     {
+  79 |         await  this.cartIcon.click();
+  80 |     }
+  81 | }
+  82 | module.exports = {ProductsPage};
+```

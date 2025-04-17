@@ -5,9 +5,21 @@
   "main": "index.js",
   "scripts": {
     "clean:allure": "rimraf allure-results allure-report",
-    "test": "npx playwright test tests/webApp1.spec.js --config=playwright.config1.js --reporter=line --reporter=allure-playwright",
+    "test:headless": "cross-env HEADLESS=true npx playwright test --config=playwright.config.allure.js",
+    "test:headed": "cross-env HEADLESS=false npx playwright test --config=playwright.config.allure.js",
+    "test": "npm run test:headless",
     "report": "npx allure-commandline generate ./allure-results --clean && npx allure-commandline open ./allure-report",
-    "run:all": "npm run clean:allure && npm run test && npm run report",
+    "run:all:headless": "npm run clean:allure && npm run test:headless || exit 0 && npm run report",
+    "run:all:headed": "npm run clean:allure && npm run test:headed || exit 0 && npm run report",
+    
+    "clean:html": "rimraf playwright-report",
+    "test:html:headless": "cross-env HEADLESS=true npx playwright test --config=playwright.config.default.js",
+  "test:html:headed": "cross-env HEADLESS=false npx playwright test --config=playwright.config.default.js",
+"run:html:headed": "npm run clean:html && npm run test:html:headed",
+"run:html:headless": "npm run clean:html && npm run test:html:headless",
+
+   
+
     "test:visual": "npx playwright test --update-snapshots"
   },
   "keywords": [],
