@@ -35,7 +35,7 @@ test('Verify the sorting order displayed for Z-A on the All Items page', async (
     await productsPage.selectZtoA();
     const actual = await productsPage.getAllProductName();
     await productsPage.printProduct();
-    //const expected = [...actual].sort().reverse();
+    const expected = [...actual].sort().reverse();
     expect(actual).toEqual(expected);
     //await takeScreenshot(page, 'z-to-a-sorted');
 });
