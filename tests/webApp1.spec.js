@@ -3,6 +3,7 @@ const { POManager } = require('../pageobjects/POManager');
 const dataset = JSON.parse(JSON.stringify(require('../utility/webAppTestData.json')));
 const { takeScreenshot } = require('../utility/visualHelper.js');
 
+
 let poManager, loginPage, productsPage;
 
 test.beforeEach(async ({ page }) => {
@@ -15,6 +16,10 @@ test.beforeEach(async ({ page }) => {
     await expect(await productsPage.getProductTitle()).toHaveText('Products');
     await productsPage.goTOAllItem();
 });
+
+
+
+
 
 
 //Test 1: A-Z Products Display
@@ -48,6 +53,7 @@ test('Verify Price High to Low Sorting', async ({ page }) => {
     await takeScreenshot(page, 'high-to-low-sorted');
     //await expect(page).toHaveScreenshot('high-to-low-sorted.png');
 });
+
 
 //Test 4: Add to Cart and Verify Cart Badge
 test('Add Items to Cart and Validate Cart Badge Count', async ({ page }) => {

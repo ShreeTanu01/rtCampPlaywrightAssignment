@@ -25,6 +25,9 @@ class ProductsPage{
         return text;
     }
     
+    // async getCartBadge() {
+    //     return await this.cartBadge.count(); // 0 or 1
+    // }
 
     async goTOAllItem() {
         await this.burgerMenuBtn.click();
