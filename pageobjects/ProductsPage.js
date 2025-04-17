@@ -24,6 +24,7 @@ class ProductsPage{
         const text = await this.cartBadge.textContent();
         return text;
     }
+    
 
     async goTOAllItem() {
         await this.burgerMenuBtn.click();

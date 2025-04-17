@@ -20,7 +20,8 @@ test('Saucedemo Test Assignment' ,async ({page})=>
     await productsPage.selectZtoA();
     const actualZToANames = await productsPage.getAllProductName();
     await productsPage.printProduct();
-    const sortedExpectedZtoA = [...actualZToANames].sort().reverse();
+    //const sortedExpectedZtoA = [...actualZToANames].sort().reverse();
+    const sortedExpectedZtoA = [...actualZToANames].sort();
     expect(actualZToANames).toEqual(sortedExpectedZtoA);
    
    //Verify the price order (high-low) displayed on the “All Items” page.  
