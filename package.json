@@ -21,6 +21,7 @@
     "test:html:headed": "cross-env HEADLESS=false npx playwright test --config=playwright.config.default.js",
     "run:html:headed": "npm run clean:html && npm run test:html:headed",
     "run:html:headless": "npm run clean:html && npm run test:html:headless",
+    
     "test:visual": "npx playwright test --update-snapshots"
   },
   "keywords": [],
