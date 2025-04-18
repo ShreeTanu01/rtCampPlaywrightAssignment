@@ -6,23 +6,20 @@
   "scripts": {
   
     "clean:allure": "rimraf allure-results allure-report",
-    "test:headless": "cross-env HEADLESS=true npx playwright test --config=playwright.config.allure.js --reporter=line --reporter=allure-playwright",
-    "test:headed": "cross-env HEADLESS=false npx playwright test --config=playwright.config.allure.js --reporter=line --reporter=allure-playwright",
-    "test": "npm run test:headless",
     "report": "npx allure-commandline generate ./allure-results --clean && npx allure-commandline open ./allure-report",
-    "run:all:headless": "npm run clean:allure && npm run test:headless && npm run report || npm run report",
-    "run:all:headed": "npm run clean:allure && npm run test:headed && npm run report || npm run report",
-    "test:manual": "npx playwright test tests/webApp.spec.js --config=playwright.config.allure.js --reporter=line --reporter=allure-playwright",
-    "run:manual:headless": "npm run clean:allure && npm run test:manual --headless && npm run report || npm run report",
-    "run:manual:headed": "npm run clean:allure && npm run test:manual --headed && npm run report || npm run report",
-    
+    "test:allure": "npx playwright test tests/webAppFunctionalTest.spec.js --config=playwright.config.allure.js --reporter=line --reporter=allure-playwright",
+    "run:allure:headless": "npm run clean:allure && cross-env HEADLESS=true npm run test:allure && npm run report || npm run report",
+    "run:allure:headed": "npm run clean:allure && cross-env HEADLESS=false npm run test:allure && npm run report || npm run report",
+
     "clean:html": "rimraf playwright-report",
-    "test:html:headless": "cross-env HEADLESS=true npx playwright test --config=playwright.config.default.js",
-    "test:html:headed": "cross-env HEADLESS=false npx playwright test --config=playwright.config.default.js",
-    "run:html:headed": "npm run clean:html && npm run test:html:headed",
-    "run:html:headless": "npm run clean:html && npm run test:html:headless",
-    
-    "test:visual": "npx playwright test --update-snapshots"
+    "test:html:headless": "cross-env HEADLESS=true npx playwright test  tests/webAppFunctionalTest.spec.js --config=playwright.config.default.js",
+    "test:html:headed": "cross-env HEADLESS=false npx playwright test tests/webAppFunctionalTest.spec.js --config=playwright.config.default.js",
+    "run:html:headed": "npm run clean:html && npm run test:html:headed && npx playwright show-report",
+    "run:html:headless": "npm run clean:html && npm run test:html:headless && npx playwright show-report",
+
+    "test:visual": "npx playwright test tests/webAppVisualTest.spec.js --config=playwright.config.default.js && npx playwright show-report",
+    "test:visual:update": "npx playwright test tests/webAppVisualTest.spec.js --config=playwright.config.default.js --update-snapshots && npx playwright show-report"
+
   },
   "keywords": [],
   "author": "",
