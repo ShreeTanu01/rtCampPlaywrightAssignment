@@ -1,4 +1,4 @@
-# 🧪 RTCamp Playwright Automation Suite
+# RTCamp Playwright Automation Suite
 
 An end-to-end UI test automation framework using [Playwright](https://playwright.dev/), built for the [SauceDemo](https://www.saucedemo.com/) web application. It covers key functional scenarios including sorting, cart interactions, and full checkout flows.
 
@@ -86,7 +86,7 @@ Validations include:
 | npm       | >= 8      |
 | Browsers  | Installed via `npx playwright install` |
 
-### Note : Command to check above `node -v && npm -v`
+#### Note : Command to check above `node -v && npm -v`
 ---
 
 ## Setup Instructions
