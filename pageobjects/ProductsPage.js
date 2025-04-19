@@ -2,20 +2,81 @@ class ProductsPage{
 
     constructor(page)
     {
-        this.products = page.locator(".inventory_item");//list rows
-        this.productsText = page.locator(".inventory_item div.inventory_item_description a div.inventory_item_name "); //list of products text
-        this.productsPrice = page.locator(".inventory_item div.inventory_item_description div.pricebar div.inventory_item_price");//list of products price
-        this.addToCartBtn = page.locator(".inventory_item div.inventory_item_description div.pricebar button");//list of btn add to cart
-        this.filter = page.locator("select_container");
-        this.dropdownOptionZtoA = page.selectOption('select.product_sort_container', 'za');//zto a
-        //await page.locator('select.product_sort_container option[value="za"]').click();
-        this.dropdownOptionHtoL = page.selectOption('select.product_sort_container', 'hilo');//high to low
+        this.burgerMenuBtn = page.locator('button[id="react-burger-menu-btn"]');
+        this.allItems = page.locator('a#inventory_sidebar_link.bm-item.menu-item');
+        this.burgerCrossBtn = page.locator('button[id="react-burger-cross-btn"]');
+        this.products = page.locator(".inventory_item");
+        this.productsText = page.locator(".inventory_item div.inventory_item_description a div.inventory_item_name "); 
+        this.productsPrice = page.locator(".inventory_item div.inventory_item_description div.pricebar div.inventory_item_price");
+        this.addToCartBtn = page.locator(".inventory_item div.inventory_item_description div.pricebar button");
+        this.filter = page.locator('select.product_sort_container');
         this.cartIcon = page.locator(".shopping_cart_link");
+        this.productTitle= page.locator('.title');
+        this.cartBadge = page.locator('.shopping_cart_badge');
     }
 
-    async getZtoAList()
+    async getProductTitle()
     {
-        await this.filter.click();
+        return await this.productTitle;
+    }
+
+    async getCartBadge() {
+        const text = await this.cartBadge.textContent();
+        return text;
+    }
+
+    async goTOAllItem() {
+        await this.burgerMenuBtn.click();
+        await this.allItems.click();
+        await this.burgerCrossBtn.click();
+
+    }
+    async selectZtoA() {
+        await this.filter.selectOption('za');
+    }
+    
+    async selectHighToLow() {
+        await this.filter.selectOption('hilo');
+    }
+    
+    async printProduct()
+    {
+        const productName = await this.productsText.allTextContents();
+        const productPrice = await this.productsPrice.allTextContents();
+        console.log("Product List:");
+        productName.forEach((name, index) => {
+        console.log(`${index + 1}. ${name} - $${productPrice[index]}`);
+
+        });
+       
+    }
+   
+    async getAllProductName()
+    {
+        const productName = await this.productsText.allTextContents();
+        return productName;
+    }
+   
+
+    async getAllProductPrice()
+    {
+        const productPrice = await this.productsPrice.allTextContents();
+        return productPrice;
+    }
+
+    async addProductToCart(){
+        const count = await this.products.count();
+        for(let i=0;i<count;++i)
+        {
+            await this.addToCartBtn.nth(i).click();
+        }
+        return count;
+    }
+
+
+   async navigateToCart()
+    {
+        await  this.cartIcon.click();
     }
 }
-module.exports = {ProductsPagePage};
+module.exports = {ProductsPage};

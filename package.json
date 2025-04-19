@@ -3,13 +3,34 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+  
+    "clean:allure": "rimraf allure-results allure-report",
+    "report": "npx allure-commandline generate ./allure-results --clean && npx allure-commandline open ./allure-report",
+    "test:allure": "npx playwright test tests/webAppFunctionalTest.spec.js --config=playwright.config.allure.js --reporter=line --reporter=allure-playwright",
+    "run:allure:headless": "npm run clean:allure && cross-env HEADLESS=true npm run test:allure && npm run report || npm run report",
+    "run:allure:headed": "npm run clean:allure && cross-env HEADLESS=false npm run test:allure && npm run report || npm run report",
+
+    "clean:html": "rimraf playwright-report",
+    "test:html:headless": "cross-env HEADLESS=true npx playwright test  tests/webAppFunctionalTest.spec.js --config=playwright.config.default.js",
+    "test:html:headed": "cross-env HEADLESS=false npx playwright test tests/webAppFunctionalTest.spec.js --config=playwright.config.default.js",
+    "run:html:headed": "npm run clean:html && npm run test:html:headed && npx playwright show-report",
+    "run:html:headless": "npm run clean:html && npm run test:html:headless && npx playwright show-report",
+
+    "test:visual": "npx playwright test tests/webAppVisualTest.spec.js --config=playwright.config.default.js && npx playwright show-report",
+    "test:visual:update": "npx playwright test tests/webAppVisualTest.spec.js --config=playwright.config.default.js --update-snapshots && npx playwright show-report"
+
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
     "@playwright/test": "^1.51.1",
-    "@types/node": "^22.14.1"
+    "@types/node": "^22.14.1",
+    "allure-playwright": "^3.2.1",
+    "axe-playwright": "^2.1.0",
+    "rimraf": "^6.0.1"
   }
 }
