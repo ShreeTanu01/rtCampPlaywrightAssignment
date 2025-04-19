@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
     poManager = new POManager(page);
     loginPage = poManager.getLoginPage();
     productsPage = poManager.getProductPage();
-    //await loginPage.goTo();
+    await loginPage.goTo();
     await expect(page).toHaveURL(/.*saucedemo.com/);
     await loginPage.validLogin(dataset.username, dataset.password);
     await expect(await productsPage.getProductTitle()).toHaveText('Products');

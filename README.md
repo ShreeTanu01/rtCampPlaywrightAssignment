@@ -51,7 +51,7 @@ Validations include:
 - Sorting logic
 - Cart state
 - Error messages
-- Add item + full checkout
+- Add item and full checkout
 
 ---
 
@@ -89,6 +89,16 @@ Validations include:
 | java Runtime  | >= 24.0.1     |
 
 #### Note : Command to check above `node -v && npm -v` ,`java -version`
+---
+
+## Supported Browsers
+
+| Browsers      | Version   |
+|-----------|-----------|
+| Google Chrome  | Playwright installed browser    |
+| Mozilla Firefox      | Playwright installed browser      |
+| Safari(Webkit)  | Playwright installed browser |
+
 ---
 
 ## Setup Instructions
@@ -160,18 +170,21 @@ npm run test:visual           # Run visual checks
 Reports/Traces will be generated in:
 - `playwright-report/index.html`
 - `allure-report/index.html`
-- `test-results/trace.zip`  #### This will generate only when Test case Fails
+- `test-results/trace.zip`  
+  > Generated **only on test failures** (if tracing is enabled).
+
 
 Visual baseline screenshots:
 - `tests/webAppVisualTest.spec.js-snapshots` 
 
-Sample Reports : `https://drive.google.com/drive/folders/1lU-FmKKqf7cUZpyNxU67PSe0xudPbwAE?usp=drive_link`
+Sample Reports : [Execution Reports](https://drive.google.com/drive/folders/1lU-FmKKqf7cUZpyNxU67PSe0xudPbwAE?usp=drive_link) 
 
 ---
 
 ## Demo Recording
 
-Check the `https://drive.google.com/drive/folders/16_U_FtD-3oK7jlbCPyVDY6iX1wWfmiU8?usp=drive_link` folder for:
+Check the [Execution Recoding](https://drive.google.com/drive/folders/16_U_FtD-3oK7jlbCPyVDY6iX1wWfmiU8?usp=drive_link) 
+ folder for:
 - Headless test execution (PlayWright Default Report) 
 - Headed test execution (PlayWright Default Report) 
 - Headless test execution (Allure Report) 
