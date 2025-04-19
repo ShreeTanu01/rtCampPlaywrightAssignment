@@ -4,7 +4,7 @@ An end-to-end UI test automation framework using [Playwright](https://playwright
 
 ---
 
-## 🚀 Features
+## Features
 
 - Playwright automation using **JavaScript**
 - **Page Object Model (POM)** architecture
@@ -13,7 +13,7 @@ An end-to-end UI test automation framework using [Playwright](https://playwright
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Category     | Technology                     |
 |--------------|---------------------------------|
@@ -25,25 +25,25 @@ An end-to-end UI test automation framework using [Playwright](https://playwright
 
 ---
 
-## 📖 References
+## References
 
 - [Playwright Docs](https://playwright.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 
 ---
 
-## ✅ Automated Test Scenarios
+## Automated Test Scenarios
 
 ### Functional Tests – `webAppFunctionalTest.spec.js`
 
 | # | Scenario |
 |---|----------|
-| 1 | ✅ Z-A sorting order on "All Items" page |
-| 2 | ✅ Price sorting from high to low |
-| 3 | ✅ Add multiple items to cart + complete checkout |
-| 4 | ✅ Negative test: Missing checkout info validation |
-| 5 | ✅ Cart badge count verification |
-| 6 | ✅ Order completion and thank-you page validation |
+| 1 | Z-A sorting order on "All Items" page |
+| 2 | Price sorting from high to low |
+| 3 | Add multiple items to cart + complete checkout |
+| 4 | Negative test: Missing checkout info validation |
+| 5 | Cart badge count verification |
+| 6 | Order completion and thank-you page validation |
 
 ### Visual Regression Tests – `webAppVisualTest.spec.js`
 
@@ -55,7 +55,7 @@ Validations include:
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 .
@@ -69,6 +69,7 @@ Validations include:
 │   └── webAppVisualTest.spec.js
 ├── utility/
 │   └── visualHelper.js
+│   └── webAppTestData.json
 ├── playwright.config.default.js   # HTML report setup
 ├── playwright.config.allure.js    # Allure report setup
 ├── package.json
@@ -77,7 +78,7 @@ Validations include:
 
 ---
 
-## 🧰 Prerequisites
+## Prerequisites
 
 | Tool      | Version   |
 |-----------|-----------|
@@ -87,7 +88,7 @@ Validations include:
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 ```bash
 # 1. Clone the repo
@@ -103,7 +104,7 @@ npx playwright install
 
 ---
 
-## 🧪 Test Execution
+## Test Execution
 
 **Functional Tests with HTML Report:**
 
@@ -128,18 +129,18 @@ npm run test:visual:update    # Update visual snapshots
 
 ---
 
-## 📊 Reports
+## Reports
 
 Reports will be generated in:
 - `playwright-report/`
 - `allure-report/`
 
 Visual baseline screenshots:
-- `screenshots/` (or specified snapshot directory)
+- `tests/webAppVisualTest.spec.js-snapshots` 
 
 ---
 
-## 🎥 Demo Recording
+## Demo Recording
 
 Check the `recordings/` folder for:
 - Headless and headed test executions
@@ -147,21 +148,21 @@ Check the `recordings/` folder for:
 
 ---
 
-## 🧭 Best Practices Followed
+## Best Practices Followed
 
-- ✅ Page Object Model (POM) structure
-- ✅ `beforeEach` hooks for login/pre-steps
-- ✅ Utility helpers for reusable logic
-- ✅ Config-driven headless/headed execution
-- ✅ Clear separation of test logic & test data
+-  Page Object Model (POM) structure
+-  `beforeEach` hooks for login/pre-steps
+-  Utility helpers for reusable logic
+-  Config-driven headless/headed execution
+-  Clear separation of test logic & test data
 
 ---
 
-## 👩‍💻 Author
+##  Author
 
 **Tanushree**  
 Senior QA Engineer  
-📫 GitHub: [@ShreeTanu01](https://github.com/ShreeTanu01)  
-🔗 LinkedIn: [Tanushree Tembhurnikar](https://www.linkedin.com/in/tanushree-tembhurnikar-9525b6157/)
+GitHub: [@ShreeTanu01](https://github.com/ShreeTanu01)  
+LinkedIn: [Tanushree Tembhurnikar](https://www.linkedin.com/in/tanushree-tembhurnikar-9525b6157/)
 
 ---
