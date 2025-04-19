@@ -106,9 +106,9 @@ npm install
 ```
 #### Note - Once you have the repository, navigate to the project directory in your terminal and run above command
 #### This will:
-#### Read the package.json file.
-#### Download and install the dependencies listed in the devDependencies section.
-#### Create a node_modules/ folder where the installed packages will reside.
+####    1. Read the package.json file.
+####    2. Download and install the dependencies listed in the devDependencies section.
+####    3. Create a node_modules/ folder where the installed packages will reside.
 
 ### 3. Install browsers
 ```bash
