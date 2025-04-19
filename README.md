@@ -85,26 +85,29 @@ Validations include:
 | Node.js   | >= 22.14.0     |
 | npm       | >= 11.3.0      |
 | Browsers  | Installed via `npx playwright install` |
+| java   | >= 24.0.1     |
+| java Runtime  | >= 24.0.1     |
 
-#### Note : Command to check above `node -v && npm -v`
+#### Note : Command to check above `node -v && npm -v` ,`java -version`
 ---
 
 ## Setup Instructions
 
 
-### 1. Create a local folder in your Laptop/Deaktop and Clone the repo
+### 1. Create a local folder in your Laptop/Desktop and Clone the repo
 ```bash
 cd localfolder-saucedemo-playwright-tests
 git clone https://github.com/ShreeTanu01/rtCampPlaywrightAssignment.git
+cd rtCampPlaywrightAssignment
 ```
-#### Note - When you clone the repository, you’ll get all the project files, including the package.json file.
-
+#### Note : When you clone the repository, you’ll get all the project files, including the package.json file.
 
 ### 2. Install dependencies
 ```bash
 npm install
+npm install node #Ignore if node is already installed
 ```
-#### Note - Once you have the repository, navigate to the project directory in your terminal and run above command
+#### Note : Once you have the repository, navigate to the project directory in your terminal and run above command
 #### This will:
 ####    1. Read the package.json file.
 ####    2. Download and install the dependencies listed in the devDependencies section.
@@ -114,7 +117,13 @@ npm install
 ```bash
 npx playwright install
 ```
-#### This will install the necessary browser binaries for Playwright to work correctly.
+#### Note : This will install the necessary browser binaries for Playwright to work correctly.
+
+### 4. Install cross-env package
+```bash
+npm install --save-dev cross-env
+```
+#### Note : It’s a small utility that lets you set environment variables across platforms (Windows, macOS, Linux) in a consistent way.
 
 
 ---
@@ -131,16 +140,19 @@ npm run run:html:headed       # Headed
 **Functional Tests with Allure Report:**
 
 ```bash
-npm run run:allure:headless   # Headless + Allure
+npm run run:allure:headless   # Headless + Allure   
 npm run run:allure:headed     # Headed + Allure
 ```
+#### Note : `install java runtime` , If not installed. While running allure report first time click on Yes for installing package
 
 **Visual Regression Tests:**
 
 ```bash
-npm run test:visual           # Run visual checks
 npm run test:visual:update    # Update visual snapshots
+npm run test:visual           # Run visual checks
+
 ```
+#### Note : At first run Visual baseline not present for comparision.So run `npm run test:visual:update` in first execution or when UI is changed in [SauceDemo](https://www.saucedemo.com/) .
 
 ---
 
