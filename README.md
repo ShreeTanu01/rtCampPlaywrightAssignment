@@ -82,8 +82,8 @@ Validations include:
 
 | Tool      | Version   |
 |-----------|-----------|
-| Node.js   | >= 18     |
-| npm       | >= 8      |
+| Node.js   | >= 22.14.0     |
+| npm       | >= 11.3.0      |
 | Browsers  | Installed via `npx playwright install` |
 
 #### Note : Command to check above `node -v && npm -v`
