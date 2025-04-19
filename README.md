@@ -92,15 +92,23 @@ Validations include:
 ## Setup Instructions
 
 ```bash
-# 1. Clone the repo
-git clone https://github.com/<your-username>/saucedemo-playwright-tests.git
-cd saucedemo-playwright-tests
+# 1. Create a local folder in your Laptop/Deaktop and Clone the repo
+cd localfolder-saucedemo-playwright-tests
+git clone https://github.com/ShreeTanu01/rtCampPlaywrightAssignment.git
+#### Note - When you clone the repository, you’ll get all the project files, including the package.json file.
+
 
 # 2. Install dependencies
 npm install
+#### Note - Once you have the repository, navigate to the project directory in your terminal and run above command
+#### This will:
+#### Read the package.json file.
+#### Download and install the dependencies listed in the devDependencies section.
+#### Create a node_modules/ folder where the installed packages will reside.
 
 # 3. Install browsers
 npx playwright install
+#### This will install the necessary browser binaries for Playwright to work correctly.
 ```
 
 ---
