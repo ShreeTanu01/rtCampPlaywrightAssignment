@@ -86,7 +86,7 @@ Validations include:
 | npm       | >= 8      |
 | Browsers  | Installed via `npx playwright install` |
 
-Note : Command to check above `node -v && npm -v`
+### Note : Command to check above `node -v && npm -v`
 ---
 
 ## Setup Instructions
