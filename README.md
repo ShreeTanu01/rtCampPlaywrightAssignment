@@ -157,19 +157,25 @@ npm run test:visual           # Run visual checks
 
 ## Reports
 
-Reports will be generated in:
-- `playwright-report/`
-- `allure-report/`
+Reports/Traces will be generated in:
+- `playwright-report/index.html`
+- `allure-report/index.html`
+- `test-results/trace.zip`  #### This will generate only when Test case Fails
 
 Visual baseline screenshots:
 - `tests/webAppVisualTest.spec.js-snapshots` 
+
+Sample Reports : `https://drive.google.com/drive/folders/1lU-FmKKqf7cUZpyNxU67PSe0xudPbwAE?usp=drive_link`
 
 ---
 
 ## Demo Recording
 
-Check the `recordings/` folder for:
-- Headless and headed test executions
+Check the `https://drive.google.com/drive/folders/16_U_FtD-3oK7jlbCPyVDY6iX1wWfmiU8?usp=drive_link` folder for:
+- Headless test execution (PlayWright Default Report) 
+- Headed test execution (PlayWright Default Report) 
+- Headless test execution (Allure Report) 
+- Headed test execution (Allure Report) 
 - Report previews and visual diffs
 
 ---
