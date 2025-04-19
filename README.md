@@ -40,7 +40,7 @@ An end-to-end UI test automation framework using [Playwright](https://playwright
 |---|----------|
 | 1 | Z-A sorting order on "All Items" page |
 | 2 | Price sorting from high to low |
-| 3 | Add multiple items to cart + complete checkout |
+| 3 | Add multiple items to cart and verify complete checkout |
 | 4 | Negative test: Missing checkout info validation |
 | 5 | Cart badge count verification |
 | 6 | Order completion and thank-you page validation |
@@ -107,7 +107,6 @@ cd rtCampPlaywrightAssignment
 npm install
 npm install node #Ignore if node is already installed
 ```
-#### Once you have the repository, navigate to the project directory in your terminal and run above command
 #### This will:
 ####    1. Read the package.json file.
 ####    2. Download and install the dependencies listed in the devDependencies section.
@@ -152,7 +151,7 @@ npm run test:visual:update    # Update visual snapshots
 npm run test:visual           # Run visual checks
 
 ```
-#### Note : At first run Visual baseline not present for comparision.So run `npm run test:visual:update` in first execution or when UI is changed in [SauceDemo](https://www.saucedemo.com/) .
+#### Note : At first run Visual baseline not present for comparision.So run `npm run test:visual:update` in first execution or when UI is changed in [SauceDemo](https://www.saucedemo.com/) to create new visual baseline to compare for Visual Regression testing.
 
 ---
 
