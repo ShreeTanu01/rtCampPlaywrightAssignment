@@ -100,14 +100,14 @@ cd localfolder-saucedemo-playwright-tests
 git clone https://github.com/ShreeTanu01/rtCampPlaywrightAssignment.git
 cd rtCampPlaywrightAssignment
 ```
-#### Note : When you clone the repository, you’ll get all the project files, including the package.json file.
+#### When you clone the repository, you’ll get all the project files, including the package.json file.
 
 ### 2. Install dependencies
 ```bash
 npm install
 npm install node #Ignore if node is already installed
 ```
-#### Note : Once you have the repository, navigate to the project directory in your terminal and run above command
+#### Once you have the repository, navigate to the project directory in your terminal and run above command
 #### This will:
 ####    1. Read the package.json file.
 ####    2. Download and install the dependencies listed in the devDependencies section.
@@ -117,13 +117,13 @@ npm install node #Ignore if node is already installed
 ```bash
 npx playwright install
 ```
-#### Note : This will install the necessary browser binaries for Playwright to work correctly.
+#### This will install the necessary browser binaries for Playwright to work correctly.
 
 ### 4. Install cross-env package
 ```bash
 npm install --save-dev cross-env
 ```
-#### Note : It’s a small utility that lets you set environment variables across platforms (Windows, macOS, Linux) in a consistent way.
+#### It’s a small utility that lets you set environment variables across platforms (Windows, macOS, Linux) in a consistent way.
 
 
 ---
@@ -189,7 +189,7 @@ Check the `recordings/` folder for:
 
 **Tanushree**  
 Senior QA Engineer  
-GitHub: [@ShreeTanu01](https://github.com/ShreeTanu01)  
+GitHub: [@ShreeTanu01/rtCampPlaywrightAssignment](https://github.com/ShreeTanu01/rtCampPlaywrightAssignment.git)  
 LinkedIn: [Tanushree Tembhurnikar](https://www.linkedin.com/in/tanushree-tembhurnikar-9525b6157/)
 
 ---
