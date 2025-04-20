@@ -32,6 +32,12 @@ An end-to-end UI test automation framework using [Playwright](https://playwright
 
 ---
 
+## Requirements
+
+- [Requirement Docs](https://drive.google.com/drive/folders/1dC8Kcq8pq63O66YACFYbONNYzlIqQaTE?usp=drive_link)
+
+---
+
 ## Automated Test Scenarios
 
 ### Functional Tests – `webAppFunctionalTest.spec.js`
