@@ -23,7 +23,7 @@ const config = {
       headless : isHeadless,
       screenshot : 'on',
       video : 'retain-on-failure',
-      trace : 'retain-on-failure',//off,on
+      trace : 'on',//off,on
     
       }
     },
@@ -37,7 +37,7 @@ const config = {
       headless : isHeadless,
       screenshot : 'on',
       video : 'retain-on-failure',
-      trace : 'retain-on-failure',
+      trace : 'on',
       }
     
     },
@@ -51,7 +51,7 @@ const config = {
       headless : isHeadless,
       screenshot : 'on',
       video : 'retain-on-failure',
-      trace : 'retain-on-failure',
+      trace : 'on',
       }
     
     }
